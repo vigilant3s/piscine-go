@@ -1,7 +1,10 @@
 #!/bin/bash
 
-# List files and directories sorted by access time, exclude hidden files and dirs, and output the names with commas.
-ls -ltu --ignore='.*' --ignore='.' --ignore='..' --group-directories-first | \
-awk '{print $9}' | \
-awk '{if (system("[ -d \"" $1 "\" ]") == 0) print $1"/"; else print $1}' | \
-paste -sd, - | sed 's/,$//'
+ls -tu --ignore='.*' --ignore='.' --ignore='..' --group-directories-first | \
+while read entry; do
+    if [ -d "$entry" ]; then
+        echo "$entry/"
+    else
+        echo "$entry"
+    fi
+done | paste -sd, -
