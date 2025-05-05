@@ -4,4 +4,4 @@
 ls -ltu --ignore='.*' --ignore='.' --ignore='..' --group-directories-first | \
 awk '{print $9}' | \
 awk '{if (system("[ -d \"" $1 "\" ]") == 0) print $1"/"; else print $1}' | \
-tr '\n' ',' | sed 's/,$//'
+paste -sd, - | sed 's/,$//'
