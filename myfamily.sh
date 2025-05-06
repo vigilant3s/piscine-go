@@ -7,8 +7,8 @@ jq -r --arg id "$HERO_ID" '
   select(.id == ($id | tonumber)) | 
   .connections.relatives | 
   gsub("\""; "") | 
-  gsub("\n"; " ") |  # Replace newlines with spaces
-  gsub(" +"; " ")     # Replace multiple spaces with a single space
-' | \
+  gsub("\n"; " ") | 
+  gsub(" +"; " ") | 
+  gsub(";$"; "")' | \
 tr '\n' ';' | \
 sed 's/;$/\n/'
