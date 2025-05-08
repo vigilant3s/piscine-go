@@ -1,17 +1,27 @@
 package student
 
 func Atoi(s string) int {
-	result := 0
-	sign := 1
-	if len(s) > 0 && s[0] == '-' {
-		sign = -1
-		s = s[1:]
+	if len(s) == 0 {
+		return 0
 	}
-	for _, char := range s {
-		if char < '0' || char > '9' {
+
+	sign := 1
+	start := 0
+
+	if s[0] == '-' {
+		sign = -1
+		start = 1
+	} else if s[0] == '+' {
+		start = 1
+	}
+
+	result := 0
+	for i := start; i < len(s); i++ {
+		if s[i] < '0' || s[i] > '9' {
 			return 0
 		}
-		result = result*10 + int(char-'0')
+		result = result*10 + int(s[i]-'0')
 	}
-	return result * sign
+
+	return sign * result
 }
