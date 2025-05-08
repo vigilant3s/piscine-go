@@ -1,6 +1,12 @@
 package student
 
-func UltimateDivMod(a *int, b *int) {
-	*a = *a / *b // Divide the value pointed to by 'a' by the value pointed to by 'b'
-	*b = *a % *b // Store the remainder in the location pointed to by 'b'
+func DivMod(a int, b int, div *int, mod *int) {
+	if b != 0 {
+		*div = a / b // Perform division if b is not 0
+		*mod = a % b // Perform modulo if b is not 0
+	} else {
+		// Handle the case where division by zero occurs
+		*div = 0 // Set the result of div to 0
+		*mod = 0 // Set the result of mod to 0
+	}
 }
