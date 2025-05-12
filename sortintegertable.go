@@ -1,4 +1,4 @@
-package student
+package piscine
 
 func SortIntegerTable(table []int) {
 	n := len(table)
