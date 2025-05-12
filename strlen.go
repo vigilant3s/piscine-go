@@ -1,4 +1,4 @@
-package student
+package piscine
 
 func StrLen(s string) int {
 	count := 0
