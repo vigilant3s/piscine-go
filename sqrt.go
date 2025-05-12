@@ -1,13 +1,19 @@
 package piscine
 
 func Sqrt(nb int) int {
-	if nb < 0 {
+	if nb <= 0 {
 		return 0
 	}
-	if nb == 0 || nb == 1 {
-		return nb
+
+	// Start iterating from 1 upwards
+	for i := 1; i*i <= nb; i++ {
+		if i*i == nb {
+			return i // Return i if the square matches
+		}
 	}
-	return Sqrt(nb - 1)
+
+	// Return 0 if no exact square root was found
+	return 0
 }
 
 // The function Sqrt takes an integer nb as input.
