@@ -19,20 +19,16 @@ func main() {
 	shouldSort := false
 
 	// Parse flags and arguments manually
-	for _, arg := range args {
-		if len(arg) > 8 && (arg[:8] == "--insert" || arg[:2] == "-i") {
-			// Handle both "--insert=value" and "-i=value" style
-			// Manually check for '=' character
-			insertStr = ""
-			if '=' == arg[8] || '=' == arg[2] {
-				// If the flag contains '=', manually extract the value
-				var value string
-				if len(arg) > 8 && arg[8] == '=' {
-					value = arg[9:] // After '='
-				} else if len(arg) > 2 && arg[2] == '=' {
-					value = arg[3:] // After '='
-				}
-				insertStr = value
+	for i := 0; i < len(args); i++ {
+		arg := args[i]
+
+		// Handle --insert or -i
+		if (len(arg) > 8 && arg[:8] == "--insert") || (len(arg) > 2 && arg[:2] == "-i") {
+			// Check if the argument has an '=' to separate the flag and value
+			if len(arg) > 8 && arg[8] == '=' {
+				insertStr = arg[9:] // After '='
+			} else if len(arg) > 2 && arg[2] == '=' {
+				insertStr = arg[3:] // After '='
 			}
 		} else if arg == "--order" || arg == "-o" {
 			shouldSort = true
