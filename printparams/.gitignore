@@ -1,0 +1,17 @@
+# Ignore Go build output
+*.exe
+*.out
+*.test
+
+# Ignore named binaries
+main
+printparams
+Nessy
+
+# Ignore IDE/editor folders
+.vscode/
+.idea/
+
+# OS system files
+.DS_Store
+Thumbs.db
