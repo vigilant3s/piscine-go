@@ -2,7 +2,6 @@ package main
 
 import (
 	"os"
-	"strings"
 
 	"github.com/01-edu/z01"
 )
@@ -23,15 +22,17 @@ func main() {
 	for _, arg := range args {
 		if len(arg) > 8 && (arg[:8] == "--insert" || arg[:2] == "-i") {
 			// Handle both "--insert=value" and "-i=value" style
-			// Look for '=' and split only if it exists
-			if strings.Contains(arg, "=") {
-				parts := strings.SplitN(arg, "=", 2)
-				if len(parts) == 2 {
-					insertStr = parts[1] // Extract the value after '='
+			// Manually check for '=' character
+			insertStr = ""
+			if '=' == arg[8] || '=' == arg[2] {
+				// If the flag contains '=', manually extract the value
+				var value string
+				if len(arg) > 8 && arg[8] == '=' {
+					value = arg[9:] // After '='
+				} else if len(arg) > 2 && arg[2] == '=' {
+					value = arg[3:] // After '='
 				}
-			} else {
-				// If no '=', we treat it as a flag with no value
-				insertStr = "" // Can be updated if necessary
+				insertStr = value
 			}
 		} else if arg == "--order" || arg == "-o" {
 			shouldSort = true
