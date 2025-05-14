@@ -2,46 +2,54 @@ package main
 
 import (
 	"os"
-	"strconv"
 
 	"github.com/01-edu/z01"
 )
 
-// Helper function to print a single rune
-func printRune(r rune) {
-	z01.PrintRune(r)
+// Atoi manually converts a string to an integer.
+// Returns -1 if the string contains any non-digit characters.
+func Atoi(s string) int {
+	result := 0
+	for _, ch := range s {
+		if ch < '0' || ch > '9' {
+			return -1 // invalid input
+		}
+		result = result*10 + int(ch-'0')
+	}
+	return result
 }
 
-// Helper function to print a string rune-by-rune
-func printStr(s string) {
-	for _, r := range s {
-		printRune(r)
+// PrintString prints a string using z01.PrintRune
+func PrintString(s string) {
+	for _, ch := range s {
+		z01.PrintRune(ch)
 	}
 }
 
 func main() {
 	args := os.Args[1:]
-	upper := false
+
+	uppercase := false
+	startIndex := 0
 
 	// Check for --upper flag
 	if len(args) > 0 && args[0] == "--upper" {
-		upper = true
-		args = args[1:] // remove the flag from args
+		uppercase = true
+		startIndex = 1
 	}
 
-	for _, arg := range args {
-		n, err := strconv.Atoi(arg)
-		if err != nil || n < 1 || n > 26 {
-			printRune(' ')
+	for i := startIndex; i < len(args); i++ {
+		n := Atoi(args[i])
+		if n < 1 || n > 26 {
+			z01.PrintRune(' ')
 			continue
 		}
-		// Convert number to letter (ASCII logic)
-		if upper {
-			printRune(rune('A' + n - 1))
+
+		if uppercase {
+			z01.PrintRune(rune('A' + n - 1))
 		} else {
-			printRune(rune('a' + n - 1))
+			z01.PrintRune(rune('a' + n - 1))
 		}
 	}
-	// End with newline for cleaner output
-	printRune('\n')
+	z01.PrintRune('\n')
 }
