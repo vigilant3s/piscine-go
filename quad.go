@@ -9,13 +9,13 @@ func QuadA(x, y int) { // This is the function declaration. It receives the widt
 	for row := 0; row < y; row++ { // This loop goes from the top to the bottom of the rectangle, one row at a time
 		for col := 0; col < x; col++ { // This inner loop prints the characters from left to right in each row
 			if row == 0 || row == y-1 { // Top or bottom row
-				if col == 0 || col == x-1 { // First or Last Character 
+				if col == 0 || col == x-1 { // First or Last Character
 					fmt.Print("o")
 				} else { // Middle Characters
 					fmt.Print("-")
 				}
 			} else { // Middle rows
-				if col == 0 || col == x-1 {  // First or Last Character 
+				if col == 0 || col == x-1 { // First or Last Character
 					fmt.Print("|")
 				} else { // Middle Characters
 					fmt.Print(" ")
@@ -72,7 +72,7 @@ func QuadC(x, y int) {
 	for row := 0; row < y; row++ {
 		for col := 0; col < x; col++ {
 			if row == 0 {
-				if col == 0 { // A cleaner way to do this: if col == 0 || col == x-1 {, saving the else if 
+				if col == 0 { // A cleaner way to do this: if col == 0 || col == x-1 {, saving the else if
 					fmt.Print("A") // Both corners are 'A'
 				} else if col == x-1 {
 					fmt.Print("A") // Top edge
@@ -80,7 +80,7 @@ func QuadC(x, y int) {
 					fmt.Print("B")
 				}
 			} else if row == y-1 {
-				if col == 0 { // A cleaner way to do this: if col == 0 || col == x-1 {, saving the else if 
+				if col == 0 { // A cleaner way to do this: if col == 0 || col == x-1 {, saving the else if
 					fmt.Print("C")
 				} else if col == x-1 {
 					fmt.Print("C") // Both corners are 'C'
@@ -95,11 +95,9 @@ func QuadC(x, y int) {
 					fmt.Print(" ") // Else print nothing
 				}
 			}
-		    }
+		}
 		fmt.Println() // Move to the next line after each row
 	}
-        }
-    }
 }
 
 func QuadD(x, y int) {
@@ -112,7 +110,7 @@ func QuadD(x, y int) {
 				if col == 0 {
 					fmt.Print("A") // Top-left corner
 				} else if col == x-1 {
-					fmt.Print("C")  // Top-right corner
+					fmt.Print("C") // Top-right corner
 				} else {
 					fmt.Print("B") // Top edge
 				}
@@ -120,9 +118,9 @@ func QuadD(x, y int) {
 				if col == 0 {
 					fmt.Print("A") // Bottom-left corner
 				} else if col == x-1 {
-					fmt.Print("C")  // Bottom-right corner
+					fmt.Print("C") // Bottom-right corner
 				} else {
-					fmt.Print("B")  // Bottom edge
+					fmt.Print("B") // Bottom edge
 				}
 
 			} else { // Middle Rows
