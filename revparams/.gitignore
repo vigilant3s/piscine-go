@@ -1,0 +1,14 @@
+# Ignore compiled Go binaries
+*.exe
+*.out
+*.test
+main
+revparams
+
+# Ignore IDE/editor folders
+.vscode/
+.idea/
+
+# OS files
+.DS_Store
+Thumbs.db
