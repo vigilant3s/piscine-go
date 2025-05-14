@@ -2,8 +2,6 @@ package main
 
 import (
 	"os"
-	"sort"
-	"strings"
 
 	"github.com/01-edu/z01"
 )
@@ -20,28 +18,28 @@ func main() {
 	var baseStr string
 	shouldSort := false
 
+	// Parse flags and arguments manually without using 'strings' or 'sort'
 	for _, arg := range args {
-		if strings.HasPrefix(arg, "--insert=") {
-			insertStr = strings.TrimPrefix(arg, "--insert=")
-		} else if strings.HasPrefix(arg, "-i=") {
-			insertStr = strings.TrimPrefix(arg, "-i=")
+		if len(arg) > 8 && arg[:8] == "--insert" {
+			insertStr = arg[9:] // Get the string after '--insert='
+		} else if len(arg) > 2 && arg[:2] == "-i" {
+			insertStr = arg[3:] // Get the string after '-i='
 		} else if arg == "--order" || arg == "-o" {
 			shouldSort = true
-		} else if !strings.HasPrefix(arg, "-") {
-			baseStr = arg
+		} else if arg[0] != '-' {
+			baseStr = arg // The first argument that is not a flag
 		}
 	}
 
+	// Combine base string and insert string
 	finalStr := baseStr + insertStr
 
+	// If --order flag is used, sort the string manually
 	if shouldSort {
-		runes := []rune(finalStr)
-		sort.Slice(runes, func(i, j int) bool {
-			return runes[i] < runes[j]
-		})
-		finalStr = string(runes)
+		finalStr = manualSort(finalStr)
 	}
 
+	// Print the final string character by character
 	for _, r := range finalStr {
 		z01.PrintRune(r)
 	}
@@ -62,4 +60,21 @@ func printHelp() {
 		}
 		z01.PrintRune('\n')
 	}
+}
+
+// Manual sorting function (ASCII order)
+func manualSort(s string) string {
+	// Convert string to a slice of runes (characters)
+	runes := []rune(s)
+	// Simple bubble sort algorithm
+	for i := 0; i < len(runes)-1; i++ {
+		for j := 0; j < len(runes)-1-i; j++ {
+			if runes[j] > runes[j+1] {
+				// Swap the characters
+				runes[j], runes[j+1] = runes[j+1], runes[j]
+			}
+		}
+	}
+	// Convert back to string
+	return string(runes)
 }
