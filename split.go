@@ -22,5 +22,5 @@ func Split(s, sep string) []string { // Split splits a string s into substrings 
 	// Add remaining part after last separator
 	result = append(result, s[lastIndex:]) // Add the remaining part of the string after the last separator to the result slice.
 
-	return result // Return the slice of substrings.
+	return result // Return the slice of substrings
 }
