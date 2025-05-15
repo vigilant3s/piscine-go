@@ -7,7 +7,7 @@ func Sqrt(nb int) int {
 
 	// Start iterating from 1 upwards
 	for i := 1; i*i <= nb; i++ {
-		if i*i == nb {
+		if i*i == nb { // Check if the square of i matches nb
 			return i // Return i if the square matches
 		}
 	}

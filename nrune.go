@@ -1,18 +1,18 @@
 package piscine
 
-func NRune(s string, n int) rune {
-	if n <= 0 {
-		return 0
+func NRune(s string, n int) rune { // NRune returns the nth rune of the string s.
+	if n <= 0 { // If n is less than or equal to 0, return 0.
+		return 0 // Return 0.
 	}
 
-	count := 1
-	for _, r := range s {
-		if count == n {
-			return r
+	count := 1            // Initialize a counter to 1.
+	for _, r := range s { // Iterate over the string s, counting the runes.
+		if count == n { // If the counter matches n,
+			return r //	 return the current rune.
 		}
-		count++
+		count++ // Increment the counter.
 	}
-	return 0
+	return 0 //	 If the nth rune is not found, return 0.
 }
 
 // NRune returns the nth rune of the string s. If n is less than or equal to 0, it returns 0.

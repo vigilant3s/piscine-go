@@ -1,8 +1,8 @@
 package piscine
 
-func IsLower(s string) bool {
-	for _, r := range s {
-		if r < 'a' || r > 'z' {
+func IsLower(s string) bool { //
+	for _, r := range s { // Iterate over each character in the string
+		if r < 'a' || r > 'z' { // Check if the character is not a lowercase letter
 			return false // Not a lowercase letter
 		}
 	}

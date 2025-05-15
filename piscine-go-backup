@@ -4,11 +4,11 @@ import (
 	"github.com/01-edu/z01"
 )
 
-func IsNegative(nb int) {
-	if nb < 0 {
-		z01.PrintRune('T')
-	} else {
-		z01.PrintRune('F')
+func IsNegative(nb int) { // Check if the number is negative
+	if nb < 0 { // Check if the number is less than 0
+		z01.PrintRune('T') // Print 'T' if true
+	} else { // Otherwise
+		z01.PrintRune('F') // Print 'F'
 	}
-	z01.PrintRune('\n')
+	z01.PrintRune('\n') // Print a new line
 }
