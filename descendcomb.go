@@ -15,7 +15,7 @@ func DescendComb() {
 			z01.PrintRune(rune(j%10 + '0'))
 
 			// Add a comma and space if it's not the last combination
-			if i != 1 || j != 0 {
+			if !(i == 1 && j == 0) {
 				z01.PrintRune(',')
 				z01.PrintRune(' ')
 			}
