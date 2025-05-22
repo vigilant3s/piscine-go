@@ -3,6 +3,8 @@ package piscine
 import "github.com/01-edu/z01"
 
 func DescendComb() {
+	first := true // Flag to track if it's the first combination or not
+
 	for i := 99; i >= 1; i-- {
 		for j := i - 1; j >= 0; j-- {
 			// Print the first number
@@ -21,5 +23,6 @@ func DescendComb() {
 			}
 		}
 	}
+	// Print newline after all combinations are printed, only once at the end
 	z01.PrintRune('\n')
 }
