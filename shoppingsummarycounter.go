@@ -1,17 +1,23 @@
 package piscine
 
-import "strings"
-
 func ShoppingSummaryCounter(str string) map[string]int {
-	// Create a map to store item counts
 	counts := make(map[string]int)
+	word := ""
 
-	// Split the string into items using space as separator
-	items := strings.Split(str, " ")
+	for _, char := range str {
+		if char == ' ' {
+			if word != "" {
+				counts[word]++
+				word = ""
+			}
+		} else {
+			word += string(char)
+		}
+	}
 
-	// Count each item
-	for _, item := range items {
-		counts[item]++
+	// Add the last word if there's any
+	if word != "" {
+		counts[word]++
 	}
 
 	return counts
