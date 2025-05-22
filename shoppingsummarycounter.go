@@ -10,6 +10,7 @@ func ShoppingSummaryCounter(str string) map[string]int {
 				counts[word]++
 				word = ""
 			}
+			// If word == "", just skip (multiple spaces)
 		} else {
 			word += string(char)
 		}
