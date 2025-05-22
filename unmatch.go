@@ -1,12 +1,19 @@
 package piscine
 
 func Unmatch(a []int) int {
-	result := 0
+	freq := make(map[int]int) // Frequency map
+
+	// Count the occurrences of each number
 	for _, num := range a {
-		result ^= num
+		freq[num]++
 	}
-	if result == 0 {
-		return -1
+
+	// Find the number that occurs an odd number of times
+	for num, count := range freq {
+		if count%2 != 0 {
+			return num
+		}
 	}
-	return result
+
+	return -1
 }
