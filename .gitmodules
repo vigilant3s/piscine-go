@@ -1,0 +1,9 @@
+[submodule "sudoku"]
+	path = sudoku
+	url = https://platform.zone01.gr/git/pgoulida/sudoku.git
+[submodule "quad"]
+	path = quad
+	url = https://platform.zone01.gr/git/dangelouk/quad.git
+[submodule "quadchecker"]
+	path = quadchecker
+	url = https://platform.zone01.gr/git/ekyrkas/quadchecker.git
