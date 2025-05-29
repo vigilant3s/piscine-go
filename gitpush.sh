@@ -1,9 +1,12 @@
 #!/bin/bash
 
-# Check if filename is provided
+# If no filename is provided, push everything with default message
 if [ -z "$1" ]; then
-  echo "Usage: ./gitpush.sh filename [optional commit message]"
-  exit 1
+  echo "No filename provided. Adding and committing all changes..."
+  git add .
+  git commit -m "Auto-commit: push all changes"
+  git push
+  exit 0
 fi
 
 FILENAME="$1"
@@ -20,7 +23,7 @@ if [[ "$FILENAME" == *.sh ]]; then
   chmod +x "$FILENAME"
 fi
 
-# Git operations
+# Git operations for single file
 git add "$FILENAME"
 git commit -m "$COMMIT_MSG"
 git push

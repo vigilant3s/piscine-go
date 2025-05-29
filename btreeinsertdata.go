@@ -1,10 +1,5 @@
 package piscine
 
-type TreeNode struct {
-	Left, Right, Parent *TreeNode
-	Data                string
-}
-
 func BTreeInsertData(root *TreeNode, data string) *TreeNode {
 	// Create the new node
 	newNode := &TreeNode{Data: data}
