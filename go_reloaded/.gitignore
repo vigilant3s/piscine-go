@@ -1,0 +1,11 @@
+# editor & OS
+.DS_Store
+.vscode/
+
+# outputs / scratch
+result.txt
+sample.txt
+
+# go
+/bin/
+/pkg/
